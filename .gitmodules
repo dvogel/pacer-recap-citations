@@ -1,0 +1,3 @@
+[submodule "citation"]
+	path = citation
+	url = https://github.com/unitedstates/citation
