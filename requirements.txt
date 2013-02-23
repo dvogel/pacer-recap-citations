@@ -1,0 +1,14 @@
+SQLAlchemy==0.6.6
+argparse==1.2.1
+csvkit==0.5.0
+dbf==0.94.003
+distribute==0.6.24
+ipython==0.13.1
+lxml==3.1.0
+openpyxl==1.5.7
+python-dateutil==1.5
+regex==2013-02-16
+requests==1.1.0
+unicodecsv==0.9.4
+wsgiref==0.1.2
+xlrd==0.7.1

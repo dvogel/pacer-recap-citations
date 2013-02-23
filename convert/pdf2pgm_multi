@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while [ "$#" -gt 0 ]; do
+    pdf_path=$1; shift
+    ppm_path_base="${pdf_path%.*}"
+    dir=$(dirname "$pdf_path")
+    any_pgm=$(find "${dir}" -maxdepth 1 -wholename "${ppm_path_base}-*.pgm" -print -quit)
+    if [ -n "$any_pgm" ]; then
+        echo "Skiping $pdf_path"
+    else
+        echo pdftoppm -gray -r 300 "${pdf_path}" "${ppm_path_base}"
+        pdftoppm -gray -r 300 "${pdf_path}" "${ppm_path_base}"
+        ls -1sh "${ppm_path_base}"*
+    fi
+done

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while [ "$#" -gt 0 ]; do
+    pgm_path=$1; shift
+    txt_path_base="${pgm_path%.*}"
+    dir=$(dirname "$pgm_path")
+    any_txt=$(find "${dir}" -maxdepth 1 -wholename "${txt_path_base}-*.txt" -print -quit)
+    if [ -n "$any_txt" ]; then
+        echo "Skipping $pgm_path"
+    else
+        echo tesseract "${pgm_path}" "${txt_path_base}" -l eng
+        tesseract "${pgm_path}" "${txt_path_base}" -l eng
+        ls -1sh "${txt_path_base}"* 
+    fi
+done
