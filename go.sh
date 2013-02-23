@@ -9,7 +9,10 @@ if [ ! -e "data" ]; then
     mkdir data
 fi
 
-if [ ! -e "data/wget.log" ]; then
+
+
+downloaded_line=$(egrep ^Downloaded: data/wget.log)
+if [ ! -e "data/wget.log" -o -n "$downloaded_line" ]; then
     cd data
     wget -e robots=off --no-host-directories --no-parent --recursive --cut-dirs=2 -l 1 --no-clobber -o ../data/wget.log -i ../data/urls.txt
     cd ..
